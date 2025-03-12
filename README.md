@@ -1,4 +1,4 @@
-﻿```markdown
+```markdown
 # ZARA Challenge - Mobile Phone Store
 
 Este proyecto es una aplicación web para visualizar, buscar y gestionar un catálogo de teléfonos móviles. Permite a los usuarios consultar detalles específicos de cada dispositivo y gestionar un carrito de compras.
@@ -21,20 +21,19 @@ Este proyecto es una aplicación web para visualizar, buscar y gestionar un cat�
 - **Pruebas**: Vitest y React Testing Library.
 
 ## 📁 Estructura del proyecto
+
 ```
-
 /src
-/assets # Imágenes, fuentes, etc.
-/components # Componentes reutilizables (incluye el Tooltip para el carrito)
-/context # Contextos para la aplicación (gestión de la API y del carrito)
-/hooks # Custom hooks
-/pages # Páginas/Vistas principales (Listado, Detalle y Carrito)
-/services # Servicios para conexión a la API
-/styles # Estilos SASS
-/utils # Utilidades y helpers
-/tests # Pruebas (se incluye un test simple que verifica la presencia del input de búsqueda)
-
-````
+  /assets          # Imágenes, fuentes, etc.
+  /components      # Componentes reutilizables (incluye el Tooltip para el carrito)
+  /context         # Contextos para la aplicación (gestión de la API y del carrito)
+  /hooks           # Custom hooks
+  /pages           # Páginas/Vistas principales (Listado, Detalle y Carrito)
+  /services        # Servicios para conexión a la API
+  /styles          # Estilos SASS
+  /utils           # Utilidades y helpers
+  /tests           # Pruebas (se incluye un test simple que verifica la presencia del input de búsqueda)
+```
 
 ## 📥 Instalación
 
@@ -42,10 +41,9 @@ Este proyecto es una aplicación web para visualizar, buscar y gestionar un cat�
    ```bash
    git clone <URL_DEL_REPOSITORIO>
    cd zara-phone-store
-````
+   ```
 
 2. Instala las dependencias:
-
    ```bash
    npm install
    ```
@@ -113,12 +111,12 @@ Se añadió un test simple en `/src/tests/App.test.jsx` que verifica que la vist
 Ejemplo de test:
 
 ```jsx
-import "@testing-library/jest-dom";
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import App from "../App";
+import '@testing-library/jest-dom';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import App from '../App';
 
-test("renders the main component with search input", () => {
+test('renders the main component with search input', () => {
   render(<App />);
   const searchInput = screen.getByPlaceholderText(/search for a smartphone/i);
   expect(searchInput).toBeInTheDocument();
@@ -129,7 +127,6 @@ test("renders the main component with search input", () => {
 
 **Jairo Sánchez Béjar**  
 📧 jairosanchezb5@gmail.com
-
 ```
 
 ### Instrucciones para guardar como archivo `.md`:
@@ -138,6 +135,3 @@ test("renders the main component with search input", () => {
 3. Pega el contenido en el editor.
 4. Guarda el archivo con el nombre `README.md`.
 5. Asegúrate de que la extensión sea `.md` y no `.txt`.
-
-¡Listo! Ahora tienes tu archivo `README.md` en formato Markdown. 😊
-```
