@@ -18,6 +18,17 @@ const ProductDetail = () => {
   const [selectedStorage, setSelectedStorage] = useState(null);
   const [currentImage, setCurrentImage] = useState('');
   const [currentPrice, setCurrentPrice] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  
+  // Detector de tamaño de pantalla
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   // Cargar detalles del producto
   useEffect(() => {
@@ -117,9 +128,9 @@ const ProductDetail = () => {
       </div>
       
       <div className="product-detail__content">
-      <div className="product-detail__image">
+        <div className="product-detail__image">
           <img src={currentImage} alt={product.name} />
-      </div>
+        </div>
         
         <div className="product-detail__info">
           <h1 className="product-detail__name">{product.name}</h1>
@@ -127,7 +138,7 @@ const ProductDetail = () => {
           
           {/* Storage selector */}
           <div className="product-detail__storage">
-            <h3>STORAGE (HOW MUCH SPACE DO YOU NEED?)</h3>
+            <h3>STORAGE {!isMobile && "(HOW MUCH SPACE DO YOU NEED?)"}</h3>
             <div className="product-detail__options storage-options">
               {product.storageOptions && product.storageOptions.map((storage, index) => (
                 <button
@@ -156,11 +167,11 @@ const ProductDetail = () => {
                 </button>
               ))}
             </div>
-              {selectedColor ? (
-                <div className="product-detail__selected-color">{selectedColor.name}</div>
-              ) : (
-                <div className="product-detail__selected-color">Selecciona un color</div>
-              )}
+            {selectedColor ? (
+              <div className="product-detail__selected-color">{selectedColor.name}</div>
+            ) : (
+              <div className="product-detail__selected-color">Selecciona un color</div>
+            )}
           </div>
           
           {/* Add to cart button */}

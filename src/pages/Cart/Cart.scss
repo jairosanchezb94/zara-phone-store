@@ -6,10 +6,18 @@
   margin: 0 auto;
   padding: $spacing-lg;
   
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-md $spacing-md;
+  }
+  
   &__title {
     font-size: $font-size-xl;
     margin-bottom: $spacing-xl;
     font-weight: normal;
+    
+    @media (max-width: $breakpoint-sm) {
+      margin-bottom: $spacing-lg;
+    }
   }
   
   &__empty {
@@ -26,13 +34,17 @@
     flex-direction: column;
     
     @include responsive(md) {
-      padding-bottom: 100px; // Espacio para el footer fijo
+      padding-bottom: 100px;
     }
   }
   
   &__items {
     flex: 1;
     margin-bottom: $spacing-xl;
+    
+    @media (max-width: $breakpoint-sm) {
+      margin-bottom: 120px; // Espacio para el footer fijo
+    }
   }
   
   &__footer {
@@ -42,6 +54,22 @@
     margin-top: $spacing-xl;
     padding-top: $spacing-lg;
     border-top: 1px solid $color-light-gray;
+    
+    @media (max-width: $breakpoint-sm) {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: $color-white;
+      padding: $spacing-md 0;
+      margin: 0;
+      border-top: 1px solid $color-light-gray;
+      
+      &-inner {
+        padding: 0 $spacing-md;
+        width: 100%;
+      }
+    }
     
     @include responsive(sm) {
       flex-direction: row;
@@ -75,12 +103,36 @@
     display: flex;
     align-items: center;
     gap: $spacing-xl;
+    
+    @media (max-width: $breakpoint-sm) {
+      justify-content: space-between;
+      width: 100%;
+      padding: 0;
+      margin: 0 0 $spacing-md 0;
+    }
   }
   
   &__total {
     display: flex;
     gap: $spacing-lg;
     font-weight: normal;
+    
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+      
+      span:first-child {
+        font-weight: normal;
+        font-size: $font-size-small;
+        text-transform: uppercase;
+      }
+      
+      span:last-child {
+        font-weight: normal;
+        text-align: right;
+      }
+    }
   }
   
   &__continue-button, &__checkout-button {
@@ -88,6 +140,16 @@
     min-width: 200px;
     text-align: center;
     cursor: pointer;
+    
+    @media (max-width: $breakpoint-sm) {
+      min-width: 0;
+      padding: $spacing-md;
+      margin: 0;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
   
   &__continue-button {
@@ -96,12 +158,23 @@
     border: 1px solid $color-black;
     text-decoration: none;
     display: inline-block;
+    
+    @media (max-width: $breakpoint-sm) {
+      text-align: center;
+      width: 49%;
+      font-size: $font-size-small;
+    }
   }
   
   &__checkout-button {
     background-color: #1B1A18;
     color: $color-white;
     border: none;
+    
+    @media (max-width: $breakpoint-sm) {
+      width: 49%;
+      font-size: $font-size-small;
+    }
   }
   
   .cart-item {
@@ -111,18 +184,26 @@
     border-bottom: 1px solid $color-light-gray;
     
     @media (max-width: $breakpoint-sm) {
-      align-items: flex-start;
+      align-items: center;
+      margin-bottom: $spacing-md;
+      padding-bottom: $spacing-md;
     }
     
     &__image {
-      width: 120px;
-      height: 120px;
-      margin-right: $spacing-lg;
+      width: 180px;
+      height: 180px;
+      margin-right: $spacing-xl;
       
       img {
         width: 100%;
         height: 100%;
         object-fit: contain;
+      }
+      
+      @media (max-width: $breakpoint-sm) {
+        width: 110px;
+        height: 110px;
+        margin-right: $spacing-md;
       }
     }
     
@@ -130,17 +211,27 @@
       flex: 1;
       display: flex;
       flex-direction: column;
+      padding-top: $spacing-md;
+      
+      @media (max-width: $breakpoint-sm) {
+        padding-top: 0;
+      }
     }
     
     &__header {
       display: flex;
-      margin-bottom: $spacing-xs;
+      margin-bottom: $spacing-sm;
       text-transform: uppercase;
     }
     
     &__name {
-      font-weight: normal;
+      font-weight: bold;
+      font-size: $font-size-medium;
       text-transform: uppercase;
+      
+      @media (max-width: $breakpoint-sm) {
+        font-size: $font-size-medium;
+      }
     }
     
     &__count {
@@ -150,13 +241,22 @@
     
     &__specs {
       text-transform: uppercase;
-      margin-bottom: $spacing-md;
+      margin-bottom: $spacing-lg;
       font-size: $font-size-small;
       color: #666;
+      letter-spacing: 0.5px;
+      
+      @media (max-width: $breakpoint-sm) {
+        margin-bottom: $spacing-md;
+      }
     }
     
     &__variants {
-      margin-bottom: $spacing-md;
+      margin-bottom: $spacing-lg;
+      
+      @media (max-width: $breakpoint-sm) {
+        margin-bottom: $spacing-md;
+      }
     }
     
     &__variant {
@@ -166,11 +266,18 @@
       color: #666;
       margin-bottom: $spacing-xs;
       text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     
     &__price {
-      font-size: $font-size-medium;
-      margin-bottom: $spacing-sm;
+      font-size: $font-size-large;
+      margin-bottom: $spacing-md;
+      font-weight: bold;
+      
+      @media (max-width: $breakpoint-sm) {
+        font-size: $font-size-medium;
+        margin-bottom: $spacing-sm;
+      }
     }
     
     &__remove {
@@ -182,6 +289,11 @@
       font-size: $font-size-small;
       cursor: pointer;
       text-decoration: underline;
+      margin-top: $spacing-sm;
+      
+      @media (max-width: $breakpoint-sm) {
+        margin-top: 0;
+      }
       
       &:hover {
         opacity: 0.8;

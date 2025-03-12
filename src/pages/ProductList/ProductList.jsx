@@ -9,6 +9,7 @@ import './ProductList.scss';
 const ProductList = () => {
   const { getProducts } = useApi();
   const [products, setProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]); // Almacenar todos los productos sin filtrar
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -36,16 +37,10 @@ const ProductList = () => {
       try {
         setLoading(true);
         const data = await getProducts(debouncedSearchTerm);
+        setAllProducts(data); // Guardar todos los productos sin filtrar
         
-        // Filtrar por color si hay un color seleccionado
-        const filteredData = selectedColor 
-          ? data.filter(product => {
-              return product.colorOptions && product.colorOptions.some(c => 
-                c.name.toLowerCase().includes(selectedColor.name.toLowerCase()) ||
-                c.hexCode.toLowerCase() === selectedColor.hexCode.toLowerCase()
-              );
-            })
-          : data;
+        // Aplicar filtro de color si existe
+        const filteredData = applyColorFilter(data, selectedColor);
         
         setProducts(filteredData);
         setResultsCount(filteredData.length);
@@ -53,6 +48,7 @@ const ProductList = () => {
       } catch (err) {
         setError('Error loading products. Please try again.');
         setProducts([]);
+        setAllProducts([]);
         setResultsCount(0);
       } finally {
         setLoading(false);
@@ -60,7 +56,29 @@ const ProductList = () => {
     };
     
     fetchProducts();
-  }, [debouncedSearchTerm, getProducts, selectedColor]);
+  }, [debouncedSearchTerm, getProducts]);
+  
+  // Función separada para aplicar el filtro de color
+  const applyColorFilter = (productsToFilter, color) => {
+    if (!color) return productsToFilter;
+    
+    return productsToFilter.filter(product => {
+      return product.colorOptions && product.colorOptions.some(c => {
+        const colorNameMatch = c.name.toLowerCase().includes(color.name.toLowerCase());
+        const hexCodeMatch = c.hexCode.toLowerCase() === color.hexCode.toLowerCase();
+        return colorNameMatch || hexCodeMatch;
+      });
+    });
+  };
+  
+  // Efecto separado para aplicar el filtro de color cuando cambie
+  useEffect(() => {
+    if (allProducts.length > 0) {
+      const filteredData = applyColorFilter(allProducts, selectedColor);
+      setProducts(filteredData);
+      setResultsCount(filteredData.length);
+    }
+  }, [selectedColor, allProducts]);
   
   // Función para limpiar la búsqueda
   const handleClearSearch = () => {
@@ -76,6 +94,8 @@ const ProductList = () => {
   // Función para aplicar filtro de color
   const handleColorFilter = (color) => {
     setSelectedColor(color);
+    // No cerramos los filtros automáticamente para móvil
+    // para que el usuario pueda ver el efecto del filtro
   };
   
   // Función para cerrar filtros
@@ -94,18 +114,18 @@ const ProductList = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="product-list__search-input"
           />
-          {searchTerm && (
+          {(searchTerm || selectedColor) && (
             <ClearSearchIcon onClick={handleClearSearch} />
           )}
         </div>
         
         <div className="product-list__filters-row">
           <div className="product-list__results-count">
-            {resultsCount} RESULTS
+            {resultsCount} RESULTS {selectedColor && `(${selectedColor.name})`}
           </div>
           
           <button 
-            className="product-list__filter-button"
+            className={`product-list__filter-button ${selectedColor ? 'active' : ''}`}
             onClick={toggleFilters}
           >
             FILTRAR

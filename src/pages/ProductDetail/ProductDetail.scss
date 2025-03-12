@@ -6,6 +6,10 @@
   margin: 0 auto;
   padding: $spacing-lg;
   
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-md; // Menos padding en móvil
+  }
+  
   &__back {
     margin-bottom: $spacing-lg;
     
@@ -19,6 +23,10 @@
         opacity: 0.7;
       }
     }
+
+    @media (max-width: $breakpoint-sm) {
+      margin-bottom: $spacing-md;
+    }
   }
   
   &__content {
@@ -28,6 +36,11 @@
     display: flex;
     flex-direction: column;
     margin-bottom: $spacing-xl;
+    
+    @media (max-width: $breakpoint-sm) {
+      padding: 0; // Sin padding en móvil
+      margin-bottom: $spacing-lg;
+    }
     
     @include responsive(md) {
       flex-direction: row;
@@ -39,6 +52,10 @@
     flex: 1;
     margin-bottom: $spacing-lg;
     
+    @media (max-width: $breakpoint-sm) {
+      margin-bottom: $spacing-md;
+    }
+    
     @include responsive(md) {
       margin-bottom: 0;
     }
@@ -47,32 +64,64 @@
       width: 100%;
       max-height: 500px;
       object-fit: contain;
+      
+      @media (max-width: $breakpoint-sm) {
+        max-height: 350px;
+      }
     }
   }
 
   &__info {
     flex: 1;
+    
+    @media (max-width: $breakpoint-sm) {
+      padding: 0;
+    }
   }
   
   &__name {
     font-size: $font-size-xl;
     margin-bottom: $spacing-md;
     font-weight: normal;
+    
+    @media (max-width: $breakpoint-sm) {
+      font-size: $font-size-large;
+      text-transform: uppercase;
+      margin-bottom: $spacing-xs;
+    }
   }
   
   &__price {
     font-size: $font-size-medium;
     margin-bottom: $spacing-xl;
     font-weight: normal;
+    
+    @media (max-width: $breakpoint-sm) {
+      margin-bottom: $spacing-lg;
+      font-size: $font-size-medium;
+      &::before {
+        content: "From ";
+        font-weight: normal;
+      }
+    }
   }
   
   &__storage, &__color {
     margin-bottom: $spacing-xl;
     
+    @media (max-width: $breakpoint-sm) {
+      margin-bottom: $spacing-lg;
+    }
+    
     h3 {
       font-size: $font-size-small;
       margin-bottom: $spacing-md;
       font-weight: normal;
+      
+      @media (max-width: $breakpoint-sm) {
+        margin-bottom: $spacing-sm;
+        text-transform: uppercase;
+      }
     }
   }
   
@@ -83,13 +132,28 @@
     &.storage-options {
       display: inline-flex; // Para que estén pegados
       
+      @media (max-width: $breakpoint-sm) {
+        width: 100%; // Ocupar todo el ancho en móvil
+        border: none;
+      }
+      
       .option-button {
         margin: 0; // Sin márgenes entre botones
         border-right: none; // Sin borde derecho para que no se duplique
         min-width: 60px; // Ancho mínimo para los botones
         
+        @media (max-width: $breakpoint-sm) {
+          flex: 1; // Distribuir espacio equitativamente
+          text-align: center;
+          border: 1px solid #CCCCCC;
+        }
+        
         &:last-child {
           border-right: 1px solid #CCCCCC; // Añadir borde al último elemento
+          
+          @media (max-width: $breakpoint-sm) {
+            border-right: 1px solid #CCCCCC;
+          }
         }
         
         &.selected {
@@ -102,6 +166,10 @@
     &.color-options {
       margin-bottom: $spacing-xs;
       gap: 10px;
+      
+      @media (max-width: $breakpoint-sm) {
+        gap: 15px;
+      }
     }
   }
   
@@ -130,6 +198,11 @@
     border-radius: 0; // Cuadrado en lugar de redondo
     border: 1px solid #CCCCCC;
     
+    @media (max-width: $breakpoint-sm) {
+      width: 24px;
+      height: 24px;
+    }
+    
     &.selected {
       border: 1px solid #000000;
     }
@@ -146,6 +219,12 @@
     letter-spacing: 0.5px;
     border: none;
     
+    @media (max-width: $breakpoint-sm) {
+      margin-top: $spacing-lg;
+      text-transform: uppercase;
+      padding: $spacing-md $spacing-lg;
+    }
+    
     &:disabled {
       background-color: #F3F2F2;
       color: #C2BFBC;
@@ -158,10 +237,20 @@
     margin: 0 auto;
     margin-bottom: $spacing-xl;
     
+    @media (max-width: $breakpoint-sm) {
+      margin-bottom: $spacing-lg;
+      padding-top: $spacing-md;
+      border-top: 1px solid $color-light-gray;
+    }
+    
     h2 {
       font-size: $font-size-medium;
       margin-bottom: $spacing-lg;
       font-weight: normal;
+      
+      @media (max-width: $breakpoint-sm) {
+        margin-bottom: $spacing-md;
+      }
     }
   }
   
@@ -171,13 +260,28 @@
       border-bottom: 1px solid $color-light-gray;
       padding: $spacing-md 0;
       
+      @media (max-width: $breakpoint-sm) {
+        flex-direction: column;
+        padding: $spacing-sm 0;
+      }
+      
       .spec-label {
         flex: 1;
         font-size: $font-size-small;
+        
+        @media (max-width: $breakpoint-sm) {
+          font-weight: bold;
+          margin-bottom: $spacing-xs;
+          text-transform: uppercase;
+        }
       }
       
       .spec-value {
         flex: 3;
+        
+        @media (max-width: $breakpoint-sm) {
+          font-size: $font-size-small;
+        }
       }
     }
   }
@@ -185,6 +289,11 @@
   &__similar {
     max-width: 1200px;
     margin: 0 auto;
+    
+    @media (max-width: $breakpoint-sm) {
+      margin-top: $spacing-xl;
+    }
+    
     h2 {
       font-size: $font-size-medium;
       margin-bottom: $spacing-lg;

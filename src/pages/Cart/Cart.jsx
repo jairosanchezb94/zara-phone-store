@@ -1,11 +1,23 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import './Cart.scss';
+import { useEffect, useState } from 'react';
 
 const Cart = () => {
   const { cartItems, removeFromCart, getCartTotal, getGroupedCartItems } = useCart();
   const groupedItems = getGroupedCartItems();
   const total = getCartTotal();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  
+  // Detector de tamaño de pantalla
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   return (
     <div className="cart">
@@ -74,15 +86,17 @@ const Cart = () => {
           
           <div className="cart__footer">
             <div className="cart__footer-inner">
-              <Link to="/" className="cart__continue-button">
-                CONTINUE SHOPPING
-              </Link>
-              
               <div className="cart__summary">
                 <div className="cart__total">
                   <span>TOTAL</span>
                   <span>{total} EUR</span>
                 </div>
+              </div>
+              
+              <div style={isMobile ? {display: 'flex', width: '100%', gap: '1%'} : {}}>
+                <Link to="/" className="cart__continue-button">
+                  CONTINUE SHOPPING
+                </Link>
                 
                 <button className="cart__checkout-button">
                   PAY
