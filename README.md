@@ -1,189 +1,143 @@
-ZARA Challenge - Mobile Phone Store
+﻿```markdown
+# ZARA Challenge - Mobile Phone Store
 
 Este proyecto es una aplicación web para visualizar, buscar y gestionar un catálogo de teléfonos móviles. Permite a los usuarios consultar detalles específicos de cada dispositivo y gestionar un carrito de compras.
 
-🚀 Características
+## 🚀 Características
 
-Visualización de catálogo: Muestra los primeros 20 teléfonos obtenidos desde la API, con filtrado en tiempo real por nombre o marca.
+- **Visualización de catálogo**: Muestra los primeros 20 teléfonos obtenidos desde la API, con filtrado en tiempo real por nombre o marca.
+- **Detalles de producto**: Incluye selección de color y almacenamiento. La imagen del móvil se actualiza dinámicamente según el color seleccionado y el precio se ajusta según el almacenamiento.
+- **Gestión del carrito**: Permite añadir y eliminar productos, con persistencia en `localStorage`.
+- **Tooltip de advertencia**: Se implementó un tooltip que alerta al usuario cuando intenta añadir más de dos móviles al carrito, preguntando si desea agregar otro.
+- **Interfaz responsiva y accesible**: Se han aplicado mejoras visuales (comentadas en el código) para adaptar el diseño a diferentes dispositivos y mejorar la experiencia de usuario.
+- **Pruebas**: Se añadió un test simple usando React Testing Library para verificar que la vista principal renderiza correctamente el input de búsqueda.
 
-Detalles de producto: Incluye selección de color y almacenamiento. La imagen del móvil se actualiza dinámicamente según el color seleccionado y el precio se ajusta según el almacenamiento.
+## 🛠️ Tecnologías utilizadas
 
-Gestión del carrito: Permite añadir y eliminar productos, con persistencia en localStorage.
+- **Frontend**: React 18, React Router para la navegación, Context API para la gestión del estado.
+- **Estilos**: SASS, con mejoras visuales comentadas en el código para ajustes respecto a los mockups.
+- **Build**: Vite.
+- **Calidad de código**: ESLint y Prettier.
+- **Pruebas**: Vitest y React Testing Library.
 
-Tooltip de advertencia: Se implementó un tooltip que alerta al usuario cuando intenta añadir más de dos móviles al carrito, preguntando si desea agregar otro.
-
-Interfaz responsiva y accesible: Se han aplicado mejoras visuales (comentadas en el código) para adaptar el diseño a diferentes dispositivos y mejorar la experiencia de usuario.
-
-Pruebas: Se añadió un test simple usando React Testing Library para verificar que la vista principal renderiza correctamente el input de búsqueda.
-
-🛠️ Tecnologías utilizadas
-
-Frontend: React 18, React Router para la navegación, Context API para la gestión del estado.
-
-Estilos: SASS, con mejoras visuales comentadas en el código para ajustes respecto a los mockups.
-
-Build: Vite.
-
-Calidad de código: ESLint y Prettier.
-
-Pruebas: Vitest y React Testing Library.
-
-📁 Estructura del proyecto
-
-bash
-
-Copiar
+## 📁 Estructura del proyecto
+```
 
 /src
-
 /assets # Imágenes, fuentes, etc.
-
 /components # Componentes reutilizables (incluye el Tooltip para el carrito)
-
 /context # Contextos para la aplicación (gestión de la API y del carrito)
-
 /hooks # Custom hooks
-
 /pages # Páginas/Vistas principales (Listado, Detalle y Carrito)
-
 /services # Servicios para conexión a la API
-
 /styles # Estilos SASS
-
 /utils # Utilidades y helpers
-
 /tests # Pruebas (se incluye un test simple que verifica la presencia del input de búsqueda)
 
-📥 Instalación
+````
 
-Clona el repositorio:
+## 📥 Instalación
 
-bash
+1. Clona el repositorio:
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
+   cd zara-phone-store
+````
 
-Copiar
+2. Instala las dependencias:
 
-git clone <URL_DEL_REPOSITORIO>
+   ```bash
+   npm install
+   ```
 
-cd zara-phone-store
+3. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
 
-Instala las dependencias:
+## 📜 Scripts disponibles
 
-bash
+- `npm run dev`: Inicia el servidor de desarrollo.
+- `npm run build`: Construye la aplicación para producción.
+- `npm run preview`: Vista previa de la build de producción.
+- `npm run test`: Ejecuta las pruebas.
+- `npm run lint`: Ejecuta el linter.
 
-Copiar
+## 🔌 API
 
-npm install
+La aplicación se conecta a una API REST que proporciona información sobre los productos. Todas las solicitudes a la API incluyen la clave de autenticación en el encabezado `x-api-key`.
 
-Inicia el servidor de desarrollo:
+## 🔄 Modos de desarrollo y producción
 
-bash
+- **Modo Desarrollo**: Sirve los assets sin minimizar mediante Vite.
+- **Modo Producción**: Sirve los assets concatenados y minimizados con la build de producción.
 
-Copiar
+## 📱 Vistas principales
 
-npm run dev
+### Vista Listado de Teléfonos
 
-📜 Scripts disponibles
+- Muestra los primeros 20 teléfonos desde la API.
+- Incluye un buscador en tiempo real que filtra los teléfonos por nombre o marca.
+- Muestra un contador de resultados de búsqueda.
+- Permite navegar a la vista de detalle al hacer clic en un teléfono.
 
-npm run dev: Inicia el servidor de desarrollo.
+### Vista Detalle de Teléfono
 
-npm run build: Construye la aplicación para producción.
+- Muestra detalles completos del dispositivo.
+- Permite seleccionar color y almacenamiento, actualizando dinámicamente la imagen y el precio.
+- Muestra productos similares en la parte inferior.
 
-npm run preview: Vista previa de la build de producción.
+### Vista Carrito
 
-npm run test: Ejecuta las pruebas.
+- Muestra los productos añadidos al carrito.
+- Permite eliminar productos individualmente.
+- Muestra el precio total.
+- Incluye un tooltip de advertencia que alerta al usuario si intenta añadir más de dos móviles, preguntando si realmente desea agregar otro.
 
-npm run lint: Ejecuta el linter.
+## 📝 Requisitos cumplidos
 
-🔌 API
+- ✅ Implementación con React 18+.
+- ✅ Gestión de estado con Context API.
+- ✅ Uso de SASS para los estilos.
+- ✅ Persistencia del carrito con `localStorage`.
+- ✅ Diseño responsive y mejoras visuales (comentadas en el código).
+- ✅ Accesibilidad.
+- ✅ Uso de linters y formatters.
+- ✅ README detallado.
+- ✅ Pruebas unitarias básicas (se añadió un test que verifica la existencia del input de búsqueda en la vista principal).
 
-La aplicación se conecta a una API REST que proporciona información sobre los productos. Todas las solicitudes a la API incluyen la clave de autenticación en el encabezado x-api-key.
+## � Pruebas
 
-🔄 Modos de desarrollo y producción
-
-Modo Desarrollo: Sirve los assets sin minimizar mediante Vite.
-
-Modo Producción: Sirve los assets concatenados y minimizados con la build de producción.
-
-📱 Vistas principales
-
-Vista Listado de Teléfonos
-
-Muestra los primeros 20 teléfonos desde la API.
-
-Incluye un buscador en tiempo real que filtra los teléfonos por nombre o marca.
-
-Muestra un contador de resultados de búsqueda.
-
-Permite navegar a la vista de detalle al hacer clic en un teléfono.
-
-Vista Detalle de Teléfono
-
-Muestra detalles completos del dispositivo.
-
-Permite seleccionar color y almacenamiento, actualizando dinámicamente la imagen y el precio.
-
-Muestra productos similares en la parte inferior.
-
-Vista Carrito
-
-Muestra los productos añadidos al carrito.
-
-Permite eliminar productos individualmente.
-
-Muestra el precio total.
-
-Incluye un tooltip de advertencia que alerta al usuario si intenta añadir más de dos móviles, preguntando si realmente desea agregar otro.
-
-📝 Requisitos cumplidos
-
-✅ Implementación con React 18+
-
-✅ Gestión de estado con Context API.
-
-✅ Uso de SASS para los estilos.
-
-✅ Persistencia del carrito con localStorage.
-
-✅ Diseño responsive y mejoras visuales (comentadas en el código).
-
-✅ Accesibilidad.
-
-✅ Uso de linters y formatters.
-
-✅ README detallado.
-
-✅ Pruebas unitarias básicas (se añadió un test que verifica la existencia del input de búsqueda en la vista principal).
-
-🧪 Pruebas
-
-Se añadió un test simple en /src/tests/App.test.jsx que verifica que la vista principal renderiza correctamente el input de búsqueda con el placeholder "Search for a smartphone...". Este test utiliza React Testing Library y jest-dom para asegurar la presencia del elemento.
+Se añadió un test simple en `/src/tests/App.test.jsx` que verifica que la vista principal renderiza correctamente el input de búsqueda con el placeholder `"Search for a smartphone..."`. Este test utiliza React Testing Library y `jest-dom` para asegurar la presencia del elemento.
 
 Ejemplo de test:
 
-jsx
+```jsx
+import "@testing-library/jest-dom";
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import App from "../App";
 
-Copiar
-
-import '@testing-library/jest-dom';
-
-import React from 'react';
-
-import { render, screen } from '@testing-library/react';
-
-import App from '../App';
-
-test('renders the main component with search input', () => {
-
-render(<App />);
-
-const searchInput = screen.getByPlaceholderText(/search for a smartphone/i);
-
-expect(searchInput).toBeInTheDocument();
-
+test("renders the main component with search input", () => {
+  render(<App />);
+  const searchInput = screen.getByPlaceholderText(/search for a smartphone/i);
+  expect(searchInput).toBeInTheDocument();
 });
+```
 
-👥 Autor
+## 👥 Autor
 
-Jairo Sánchez Béjar
+**Jairo Sánchez Béjar**  
+📧 jairosanchezb5@gmail.com
 
-jairosanchezb5@gmail.com
+```
+
+### Instrucciones para guardar como archivo `.md`:
+1. Abre un editor de texto (como Notepad, VS Code, Sublime Text, etc.).
+2. Copia el contenido anterior.
+3. Pega el contenido en el editor.
+4. Guarda el archivo con el nombre `README.md`.
+5. Asegúrate de que la extensión sea `.md` y no `.txt`.
+
+¡Listo! Ahora tienes tu archivo `README.md` en formato Markdown. 😊
+```
