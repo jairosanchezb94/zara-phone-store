@@ -10,6 +10,12 @@ export default [
     ignores: ['dist'] 
   },
   {
+    files: ['**/__tests__/**/*.{js,jsx}', '**/*.{spec,test}.{js,jsx}'],
+    env: {
+      jest: true,
+    },
+  },
+  {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,

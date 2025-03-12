@@ -94,8 +94,6 @@ const ProductList = () => {
   // Función para aplicar filtro de color
   const handleColorFilter = (color) => {
     setSelectedColor(color);
-    // No cerramos los filtros automáticamente para móvil
-    // para que el usuario pueda ver el efecto del filtro
   };
   
   // Función para cerrar filtros

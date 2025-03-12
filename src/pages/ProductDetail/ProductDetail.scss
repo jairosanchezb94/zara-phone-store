@@ -7,7 +7,7 @@
   padding: $spacing-lg;
   
   @media (max-width: $breakpoint-sm) {
-    padding: $spacing-md; // Menos padding en móvil
+    padding: $spacing-md;
   }
   
   &__back {
@@ -38,13 +38,13 @@
     margin-bottom: $spacing-xl;
     
     @media (max-width: $breakpoint-sm) {
-      padding: 0; // Sin padding en móvil
+      padding: 0;
       margin-bottom: $spacing-lg;
     }
     
     @include responsive(md) {
       flex-direction: row;
-      gap: $spacing-xl * 2; // Aumentado el espacio entre imagen e info
+      gap: $spacing-xl * 2;
     }
   }
   
@@ -138,18 +138,18 @@
       }
       
       .option-button {
-        margin: 0; // Sin márgenes entre botones
-        border-right: none; // Sin borde derecho para que no se duplique
-        min-width: 60px; // Ancho mínimo para los botones
+        margin: 0;
+        border-right: none;
+        min-width: 60px;
         
         @media (max-width: $breakpoint-sm) {
-          flex: 1; // Distribuir espacio equitativamente
+          flex: 1;
           text-align: center;
           border: 1px solid #CCCCCC;
         }
         
         &:last-child {
-          border-right: 1px solid #CCCCCC; // Añadir borde al último elemento
+          border-right: 1px solid #CCCCCC;
           
           @media (max-width: $breakpoint-sm) {
             border-right: 1px solid #CCCCCC;
@@ -158,7 +158,7 @@
         
         &.selected {
           border-color: #000000;
-          z-index: 1; // Para que el borde negro se vea por encima de los otros
+          z-index: 1;
         }
       }
     }
@@ -195,7 +195,7 @@
   .color-button {
     width: 20px;
     height: 20px;
-    border-radius: 0; // Cuadrado en lugar de redondo
+    border-radius: 0;
     border: 1px solid #CCCCCC;
     
     @media (max-width: $breakpoint-sm) {
