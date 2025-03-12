@@ -1,4 +1,3 @@
-```markdown
 # ZARA Challenge - Mobile Phone Store
 
 Este proyecto es una aplicación web para visualizar, buscar y gestionar un catálogo de teléfonos móviles. Permite a los usuarios consultar detalles específicos de cada dispositivo y gestionar un carrito de compras.
