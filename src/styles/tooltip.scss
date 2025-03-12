@@ -1,0 +1,51 @@
+@use './variables.scss' as *;
+@use './mixins.scss' as *;
+
+.tooltip-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.tooltip-container {
+  background-color: white;
+  padding: $spacing-lg;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  
+  p {
+    margin-bottom: $spacing-md;
+    text-align: center;
+  }
+  
+  .tooltip-buttons {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-md;
+    
+    button {
+      padding: $spacing-sm $spacing-lg;
+      min-width: 100px;
+      
+      &:first-child {
+        background-color: $color-white;
+        color: $color-black;
+        border: 1px solid $color-black;
+      }
+      
+      &:last-child {
+        background-color: #1B1A18;
+        color: $color-white;
+        border: none;
+      }
+    }
+  }
+}

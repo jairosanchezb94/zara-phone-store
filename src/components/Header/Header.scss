@@ -1,0 +1,33 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  width: 100%;
+  border-bottom: 1px solid $color-light-gray;
+  padding: $spacing-md $spacing-lg;
+  
+  // Modificar el borde cuando estamos en la página del carrito
+  &--cart-page {
+    border-bottom: 1px solid #000000;
+  }
+  
+  &__container {
+    @include flex(row, space-between, center);
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+  
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  &__cart {
+    display: flex;
+    align-items: center;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

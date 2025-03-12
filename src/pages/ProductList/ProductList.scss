@@ -1,0 +1,113 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.product-list {
+  max-width: 1850px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+  
+  &__search {
+    margin-bottom: $spacing-xl;
+    
+    &-container {
+      position: relative;
+      width: 100%;
+    }
+    
+    &-input {
+      width: 100%;
+      padding: $spacing-md;
+      padding-right: $spacing-xl * 2; // Espacio para el botón de borrar
+      border: none;
+      border-bottom: 1px solid $color-black;
+      font-size: $font-size-base;
+      font-family: $font-family;
+      outline: none;
+      
+      &::placeholder {
+        color: $color-black;
+        opacity: 0.5;
+      }
+    }
+  }
+  
+  &__filters-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: $spacing-sm;
+  }
+  
+  &__filter-button {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: $font-size-small;
+    font-family: $font-family;
+    cursor: pointer;
+    text-transform: uppercase;
+    
+    @media (max-width: $breakpoint-sm) {
+      display: block;
+    }
+    
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  
+  .clear-search-button {
+    position: absolute;
+    right: $spacing-md;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-xs;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  
+  &__results-count {
+    margin-top: $spacing-sm;
+    font-size: $font-size-small;
+  }
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: $spacing-md;
+    
+    @include responsive(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include responsive(md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @include responsive(lg) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  
+  &__item {
+    display: block;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  
+  &__loading, &__error {
+    text-align: center;
+    padding: $spacing-xl;
+  }
+}

@@ -1,0 +1,37 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.color-filter {
+  display: none; // Por defecto oculto (solo visible en móvil)
+  gap: $spacing-sm;
+  margin-top: $spacing-sm;
+  align-items: center;
+  
+  @media (max-width: $breakpoint-sm) {
+    display: flex;
+  }
+  
+  &__color {
+    width: 24px;
+    height: 24px;
+    border: 1px solid black;
+    padding: 0;
+    cursor: pointer;
+    
+    &.selected {
+      outline: 2px solid black;
+      outline-offset: 2px;
+    }
+  }
+  
+  &__close-button {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: $font-size-small;
+    font-family: $font-family;
+    text-transform: uppercase;
+    padding: 0;
+    cursor: pointer;
+  }
+}

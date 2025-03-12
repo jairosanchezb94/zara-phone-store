@@ -1,0 +1,312 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.product-detail {
+  max-width: 1850px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+  
+  &__back {
+    margin-bottom: $spacing-lg;
+    
+    a {
+      display: flex;
+      align-items: center;
+      font-size: $font-size-small;
+      text-transform: uppercase;
+      
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+  
+  &__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $spacing-lg;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $spacing-xl;
+    
+    @include responsive(md) {
+      flex-direction: row;
+      gap: $spacing-xl * 2; // Aumentado el espacio entre imagen e info
+    }
+  }
+  
+  &__image {
+    flex: 1;
+    margin-bottom: $spacing-lg;
+    
+    @include responsive(md) {
+      margin-bottom: 0;
+    }
+    
+    img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+    }
+  }
+
+  &__info {
+    flex: 1;
+  }
+  
+  &__name {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-md;
+    font-weight: normal;
+  }
+  
+  &__price {
+    font-size: $font-size-medium;
+    margin-bottom: $spacing-xl;
+    font-weight: normal;
+  }
+  
+  &__storage, &__color {
+    margin-bottom: $spacing-xl;
+    
+    h3 {
+      font-size: $font-size-small;
+      margin-bottom: $spacing-md;
+      font-weight: normal;
+    }
+  }
+  
+  &__options {
+    display: flex;
+    flex-wrap: wrap;
+    
+    &.storage-options {
+      display: inline-flex; // Para que estén pegados
+      
+      .option-button {
+        margin: 0; // Sin márgenes entre botones
+        border-right: none; // Sin borde derecho para que no se duplique
+        min-width: 60px; // Ancho mínimo para los botones
+        
+        &:last-child {
+          border-right: 1px solid #CCCCCC; // Añadir borde al último elemento
+        }
+        
+        &.selected {
+          border-color: #000000;
+          z-index: 1; // Para que el borde negro se vea por encima de los otros
+        }
+      }
+    }
+    
+    &.color-options {
+      margin-bottom: $spacing-xs;
+      gap: 10px;
+    }
+  }
+  
+  &__selected-color {
+    font-size: $font-size-small;
+    color: #666;
+    margin-top: $spacing-xs;
+  }
+  
+  .option-button {
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid #CCCCCC;
+    background-color: $color-white;
+    font-weight: normal;
+    
+    &.selected {
+      border-color: #000000;
+      background-color: $color-white;
+      color: $color-black;
+    }
+  }
+  
+  .color-button {
+    width: 20px;
+    height: 20px;
+    border-radius: 0; // Cuadrado en lugar de redondo
+    border: 1px solid #CCCCCC;
+    
+    &.selected {
+      border: 1px solid #000000;
+    }
+  }
+  
+  &__add-button {
+    width: 100%;
+    padding: $spacing-md;
+    background-color: #1B1A18;
+    color: #FFFFFF;
+    font-size: $font-size-medium;
+    margin-top: $spacing-xl;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    border: none;
+    
+    &:disabled {
+      background-color: #F3F2F2;
+      color: #C2BFBC;
+      cursor: not-allowed;
+    }
+  }
+  
+  &__specs {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: $spacing-xl;
+    
+    h2 {
+      font-size: $font-size-medium;
+      margin-bottom: $spacing-lg;
+      font-weight: normal;
+    }
+  }
+  
+  &__specs-list {
+    .spec-row {
+      display: flex;
+      border-bottom: 1px solid $color-light-gray;
+      padding: $spacing-md 0;
+      
+      .spec-label {
+        flex: 1;
+        font-size: $font-size-small;
+      }
+      
+      .spec-value {
+        flex: 3;
+      }
+    }
+  }
+  
+  &__similar {
+    max-width: 1200px;
+    margin: 0 auto;
+    h2 {
+      font-size: $font-size-medium;
+      margin-bottom: $spacing-lg;
+      font-weight: normal;
+    }
+  }
+  
+  &__similar-grid {
+    // Primero establecer el estilo base (grid)
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: $spacing-md;
+    
+    @include responsive(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include responsive(md) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    // Solo en móvil: scroll horizontal (sobrescribe el grid)
+    @media (max-width: ($breakpoint-sm - 1)) {
+      display: flex;
+      overflow-x: auto;
+      gap: $spacing-md;
+      padding-bottom: $spacing-md; // Para el scrollbar
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch; // Para mejor comportamiento en iOS
+      
+      // Ocultar scrollbar pero mantener la funcionalidad
+      &::-webkit-scrollbar {
+        height: 4px;
+        background: $color-light-gray;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: $color-black;
+      }
+      
+      // Ancho fijo para los elementos en scroll horizontal
+      .similar-product {
+        min-width: 200px;
+        width: 200px;
+      }
+    }
+  }
+  
+  .similar-product {
+    display: block;
+    padding: $spacing-md;
+    position: relative;
+    overflow: hidden;
+    border: 0.5px solid $color-light-gray;
+    transition: transform 0.3s ease;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background-color: $color-black;
+      transition: height 0.3s ease;
+      z-index: 0;
+    }
+    
+    &:hover {
+      transform: translateY(-5px);
+      
+      &::after {
+        height: 100%;
+      }
+      
+      .similar-product__brand,
+      .similar-product__name,
+      .similar-product__price {
+        color: $color-white;
+      }
+    }
+    
+    &__image {
+      width: 100%;
+      height: 150px;
+      margin-bottom: $spacing-sm;
+      position: relative;
+      z-index: 1;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    
+    &__info {
+      text-align: left;
+      position: relative;
+      z-index: 1;
+    }
+    
+    &__brand {
+      font-size: $font-size-small;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+    
+    &__name {
+      margin-bottom: $spacing-xs;
+      @include truncate(1);
+      transition: color 0.3s ease;
+    }
+    
+    &__price {
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+  }
+  
+  &__loading, &__error {
+    text-align: center;
+    padding: $spacing-xl;
+  }
+}
