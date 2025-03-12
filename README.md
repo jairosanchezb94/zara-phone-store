@@ -13,8 +13,8 @@ Este proyecto es una aplicación web para visualizar, buscar y gestionar un cat�
 
 ## 🛠️ Tecnologías utilizadas
 
-- **Frontend**: React 18, React Router para la navegación, Context API para la gestión del estado.
-- **Estilos**: SASS, con mejoras visuales comentadas en el código para ajustes respecto a los mockups.
+- **Frontend**: React 18, React Router.
+- **Estilos**: SASS.
 - **Build**: Vite.
 - **Calidad de código**: ESLint y Prettier.
 - **Pruebas**: Vitest y React Testing Library.
@@ -26,7 +26,6 @@ Este proyecto es una aplicación web para visualizar, buscar y gestionar un cat�
   /assets          # Imágenes, fuentes, etc.
   /components      # Componentes reutilizables (incluye el Tooltip para el carrito)
   /context         # Contextos para la aplicación (gestión de la API y del carrito)
-  /hooks           # Custom hooks
   /pages           # Páginas/Vistas principales (Listado, Detalle y Carrito)
   /services        # Servicios para conexión a la API
   /styles          # Estilos SASS
@@ -38,7 +37,7 @@ Este proyecto es una aplicación web para visualizar, buscar y gestionar un cat�
 
 1. Clona el repositorio:
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone [<URL_DEL_REPOSITORIO>](https://github.com/jairosanchezb94/zara-phone-store)
    cd zara-phone-store
    ```
 
@@ -56,9 +55,7 @@ Este proyecto es una aplicación web para visualizar, buscar y gestionar un cat�
 
 - `npm run dev`: Inicia el servidor de desarrollo.
 - `npm run build`: Construye la aplicación para producción.
-- `npm run preview`: Vista previa de la build de producción.
 - `npm run test`: Ejecuta las pruebas.
-- `npm run lint`: Ejecuta el linter.
 
 ## 🔌 API
 
@@ -127,10 +124,3 @@ test('renders the main component with search input', () => {
 **Jairo Sánchez Béjar**  
 📧 jairosanchezb5@gmail.com
 ```
-
-### Instrucciones para guardar como archivo `.md`:
-1. Abre un editor de texto (como Notepad, VS Code, Sublime Text, etc.).
-2. Copia el contenido anterior.
-3. Pega el contenido en el editor.
-4. Guarda el archivo con el nombre `README.md`.
-5. Asegúrate de que la extensión sea `.md` y no `.txt`.
